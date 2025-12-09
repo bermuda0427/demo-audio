@@ -1,0 +1,57 @@
+---
+/**
+ * Section.astro - 通用區塊容器
+ * 處理 padding、背景色變化、響應式 container
+ */
+
+interface Props {
+    /** 背景樣式: 'default' | 'alt' | 'dark' | 'primary' */
+    background?: "default" | "alt" | "dark" | "primary";
+    /** 間距大小: 'sm' | 'md' | 'lg' */
+    spacing?: "sm" | "md" | "lg";
+    /** 是否使用 container */
+    container?: boolean;
+    /** 額外的 CSS class */
+    class?: string;
+    /** data-animate 屬性 */
+    animate?: string;
+}
+
+const {
+    background = "default",
+    spacing = "md",
+    container = true,
+    class: className = "",
+    animate,
+} = Astro.props;
+
+// Background styles mapping
+const bgStyles = {
+    default: "bg-surface",
+    alt: "bg-surface-alt",
+    dark: "bg-text-main text-text-light",
+    primary: "bg-primary text-text-light",
+};
+
+// Spacing styles mapping
+const spacingStyles = {
+    sm: "py-8 md:py-12",
+    md: "py-12 md:py-20",
+    lg: "py-16 md:py-28",
+};
+---
+
+<section
+    class:list={[bgStyles[background], spacingStyles[spacing], className]}
+    data-animate={animate}
+>
+    {
+        container ? (
+            <div class="container-site">
+                <slot />
+            </div>
+        ) : (
+            <slot />
+        )
+    }
+</section>

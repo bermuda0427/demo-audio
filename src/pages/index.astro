@@ -1,0 +1,134 @@
+---
+/**
+ * index.astro - 範例首頁
+ * 組裝 Hero、Section 等元件的示範頁面
+ */
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/ui/Section.astro";
+import { siteConfig } from "../config/siteConfig";
+
+// 示範用的 Feature 資料
+const features = [
+	{
+		icon: "🚀",
+		title: "Lorem Ipsum",
+		description:
+			"Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+	},
+	{
+		icon: "💡",
+		title: "Dolor Sit Amet",
+		description:
+			"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+	},
+	{
+		icon: "🎯",
+		title: "Excepteur Sint",
+		description:
+			"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+	},
+];
+---
+
+<Layout>
+	<!-- Hero Section -->
+	<Hero
+		title="Lorem Ipsum Dolor Sit Amet Consectetur"
+		subtitle="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		layout="centered"
+		cta={[
+			{ label: "立即開始", href: "/contact", variant: "primary" },
+			{ label: "了解更多", href: "/about", variant: "secondary" },
+		]}
+	/>
+
+	<!-- Features Section -->
+	<Section background="alt" spacing="lg">
+		<div class="text-center mb-12" data-animate="fade-up">
+			<h2 class="text-h2 mb-4">我們的服務</h2>
+			<p class="text-text-muted text-lg max-w-2xl mx-auto">
+				Excepteur sint occaecat cupidatat non proident, sunt in culpa
+				qui officia deserunt mollit anim.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			{
+				features.map((feature, index) => (
+					<div
+						class="bg-surface rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow"
+						data-animate="fade-up"
+						data-animate-delay={String(index * 0.1)}
+					>
+						<div class="text-4xl mb-4">{feature.icon}</div>
+						<h3 class="text-h4 mb-3">{feature.title}</h3>
+						<p class="text-text-muted">{feature.description}</p>
+					</div>
+				))
+			}
+		</div>
+	</Section>
+
+	<!-- About Section (Split Layout Demo) -->
+	<Section spacing="lg">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+			<div data-animate="slide-right">
+				<div
+					class="aspect-video bg-gradient-to-br from-primary to-secondary rounded-xl"
+				>
+				</div>
+			</div>
+
+			<div data-animate="slide-left">
+				<h2 class="text-h2 mb-6">關於我們</h2>
+				<p class="text-text-muted text-lg mb-6">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+					do eiusmod tempor incididunt ut labore et dolore magna
+					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+					ullamco laboris.
+				</p>
+				<p class="text-text-muted mb-8">
+					Duis aute irure dolor in reprehenderit in voluptate velit
+					esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+					occaecat cupidatat non proident.
+				</p>
+				<a
+					href="/about"
+					class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+				>
+					了解更多
+					<svg
+						class="w-5 h-5"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</Section>
+
+	<!-- CTA Section -->
+	<Section background="dark" spacing="lg">
+		<div class="text-center" data-animate="fade-up">
+			<h2 class="text-h2 mb-6">準備開始了嗎？</h2>
+			<p class="text-text-light/70 text-lg mb-8 max-w-2xl mx-auto">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+				eiusmod tempor incididunt.
+			</p>
+			<a
+				href="/contact"
+				class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold bg-surface text-text-main hover:bg-surface-alt transition-colors shadow-lg"
+			>
+				聯絡我們
+			</a>
+		</div>
+	</Section>
+</Layout>

@@ -1,0 +1,145 @@
+---
+/**
+ * Hero.astro - 通用 Hero 元件
+ * 支援兩種版型：centered | split (圖左文右)
+ * 使用 astro:assets 的 <Image /> 配合 widths & sizes 自動響應式
+ */
+import { Image } from 'astro:assets';
+
+interface CTA {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary';
+}
+
+interface Props {
+  /** 標題文字 */
+  title: string;
+  /** 副標題/描述文字 */
+  subtitle?: string;
+  /** Hero 圖片 (使用 astro:assets import) */
+  image?: ImageMetadata;
+  /** 圖片替代文字 */
+  imageAlt?: string;
+  /** 版型：'centered' | 'split' */
+  layout?: 'centered' | 'split';
+  /** CTA 按鈕 */
+  cta?: CTA[];
+  /** 額外的 CSS class */
+  class?: string;
+}
+
+const {
+  title,
+  subtitle,
+  image,
+  imageAlt = '',
+  layout = 'centered',
+  cta = [],
+  class: className = '',
+} = Astro.props;
+
+const isCentered = layout === 'centered';
+---
+
+<section
+  class:list={[
+    'relative overflow-hidden',
+    isCentered ? 'py-20 md:py-32' : 'py-12 md:py-20',
+    className,
+  ]}
+>
+  <div class="container-site">
+    {isCentered ? (
+      <!-- Centered Layout -->
+      <div class="text-center max-w-4xl mx-auto" data-animate="fade-up">
+        <h1 class="text-h1 text-balance mb-6">
+          {title}
+        </h1>
+        
+        {subtitle && (
+          <p class="text-xl text-text-muted mb-8 max-w-2xl mx-auto" data-animate="fade-up" data-animate-delay="0.1">
+            {subtitle}
+          </p>
+        )}
+        
+        {cta.length > 0 && (
+          <div class="flex flex-wrap justify-center gap-4" data-animate="fade-up" data-animate-delay="0.2">
+            {cta.map((button) => (
+              <a
+                href={button.href}
+                class:list={[
+                  'inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold transition-all duration-300',
+                  button.variant === 'secondary'
+                    ? 'bg-surface-alt text-text-main hover:bg-border'
+                    : 'bg-primary text-text-light hover:bg-primary-dark shadow-lg hover:shadow-xl',
+                ]}
+              >
+                {button.label}
+              </a>
+            ))}
+          </div>
+        )}
+        
+        {image && (
+          <div class="mt-12" data-animate="scale-up" data-animate-delay="0.3">
+            <Image
+              src={image}
+              alt={imageAlt}
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, 80vw"
+              class="rounded-xl shadow-xl mx-auto"
+            />
+          </div>
+        )}
+      </div>
+    ) : (
+      <!-- Split Layout (圖左文右) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Image -->
+        {image && (
+          <div class="order-2 lg:order-1" data-animate="slide-right">
+            <Image
+              src={image}
+              alt={imageAlt}
+              widths={[400, 600, 800]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              class="rounded-xl shadow-lg w-full"
+            />
+          </div>
+        )}
+        
+        <!-- Content -->
+        <div class:list={['order-1 lg:order-2', !image && 'lg:col-span-2 max-w-2xl']} data-animate="slide-left">
+          <h1 class="text-h1 text-balance mb-6">
+            {title}
+          </h1>
+          
+          {subtitle && (
+            <p class="text-xl text-text-muted mb-8">
+              {subtitle}
+            </p>
+          )}
+          
+          {cta.length > 0 && (
+            <div class="flex flex-wrap gap-4">
+              {cta.map((button) => (
+                <a
+                  href={button.href}
+                  class:list={[
+                    'inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold transition-all duration-300',
+                    button.variant === 'secondary'
+                      ? 'bg-surface-alt text-text-main hover:bg-border'
+                      : 'bg-primary text-text-light hover:bg-primary-dark shadow-lg hover:shadow-xl',
+                  ]}
+                >
+                  {button.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
