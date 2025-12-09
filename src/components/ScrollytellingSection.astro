@@ -1,0 +1,404 @@
+---
+import { Image } from 'astro:assets';
+import speakerDetail from '../assets/speaker-detail.jpg';
+import speakerLuxury from '../assets/speaker-luxury.jpg';
+---
+
+<!-- Scrollytelling Section 1: 工藝之美 -->
+<section class="scrolly-section" data-section="craftsmanship">
+  <div class="scrolly-container">
+    <div class="scrolly-content">
+      <div class="scrolly-text-block fade-in-up">
+        <span class="scrolly-label">工藝</span>
+        <h2 class="scrolly-title">
+          每一處細節<br />
+          都是<span class="text-gradient">匠心</span>的體現
+        </h2>
+        <div class="luxury-line my-6"></div>
+        <p class="scrolly-description">
+          我們相信，真正的奢華不在於浮誇的裝飾，而在於對每一個細節的極致追求。從木材的選擇、切割的角度，到每一顆螺絲的位置，都經過無數次的調整與打磨。
+        </p>
+        <p class="scrolly-description">
+          這不僅僅是一件音響設備，更是一件藝術品，一個能夠傳承的經典。
+        </p>
+      </div>
+    </div>
+    <div class="scrolly-image-wrapper parallax-image">
+      <Image 
+        src={speakerDetail} 
+        alt="音響工藝細節" 
+        class="scrolly-image"
+        quality={90}
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Scrollytelling Section 2: 聲音的靈魂 -->
+<section class="scrolly-section scrolly-section-reverse" data-section="sound">
+  <div class="scrolly-container">
+    <div class="scrolly-image-wrapper parallax-image">
+      <Image 
+        src={speakerLuxury} 
+        alt="奢華音響系統" 
+        class="scrolly-image"
+        quality={90}
+      />
+    </div>
+    <div class="scrolly-content">
+      <div class="scrolly-text-block fade-in-up">
+        <span class="scrolly-label">音質</span>
+        <h2 class="scrolly-title">
+          聆聽<span class="text-gradient">靈魂</span><br />
+          的共鳴
+        </h2>
+        <div class="luxury-line my-6"></div>
+        <p class="scrolly-description">
+          聲音不僅僅是物理波動，更是情感的載體。我們的音響系統能夠還原每一個音符的本真，讓您感受到音樂家創作時的每一份情感。
+        </p>
+        <p class="scrolly-description">
+          從低頻的震撼到高頻的細膩，從空間感的營造到細節的呈現，每一個維度都經過精密調校，只為給您帶來最純粹的聆聽體驗。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scrollytelling Section 3: 數據展示 -->
+<section class="stats-section">
+  <div class="container-site">
+    <div class="stats-grid">
+      <div class="stat-card fade-in-up">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">年工藝傳承</div>
+      </div>
+      <div class="stat-card fade-in-up" style="animation-delay: 0.2s;">
+        <div class="stat-number">10,000+</div>
+        <div class="stat-label">滿意客戶</div>
+      </div>
+      <div class="stat-card fade-in-up" style="animation-delay: 0.4s;">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">音質還原度</div>
+      </div>
+      <div class="stat-card fade-in-up" style="animation-delay: 0.6s;">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">專業服務</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scrollytelling Section 4: 體驗邀請 -->
+<section class="experience-section">
+  <div class="container-site">
+    <div class="experience-content">
+      <h2 class="experience-title fade-in-up">
+        親臨現場<br />
+        感受<span class="text-gradient">極致</span>之聲
+      </h2>
+      <p class="experience-description fade-in-up">
+        我們誠摯邀請您蒞臨展示中心，在專業音響師的引導下，體驗真正的高端音響系統。<br />
+        預約您的專屬試聽時間，讓我們為您開啟一段非凡的聲音之旅。
+      </p>
+      <a href="/contact" class="experience-btn fade-in-up">
+        立即預約
+        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Scrollytelling 基礎區塊 */
+  .scrolly-section {
+    position: relative;
+    padding: 8rem 0;
+    overflow: hidden;
+  }
+
+  .scrolly-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-2xl);
+  }
+
+  .scrolly-section-reverse .scrolly-container {
+    direction: rtl;
+  }
+
+  .scrolly-section-reverse .scrolly-content,
+  .scrolly-section-reverse .scrolly-image-wrapper {
+    direction: ltr;
+  }
+
+  /* 文字區塊 */
+  .scrolly-text-block {
+    max-width: 600px;
+  }
+
+  .scrolly-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .scrolly-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .scrolly-description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* 圖片區塊 */
+  .scrolly-image-wrapper {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .scrolly-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .scrolly-image-wrapper:hover .scrolly-image {
+    transform: scale(1.05);
+  }
+
+  /* 視差效果 */
+  .parallax-image {
+    transform: translateY(0);
+    transition: transform 0.1s linear;
+  }
+
+  /* 統計數據區塊 */
+  .stats-section {
+    padding: 8rem 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a1a1a 100%);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* 體驗邀請區塊 */
+  .experience-section {
+    padding: 10rem 0;
+    background: var(--color-surface);
+  }
+
+  .experience-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .experience-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .experience-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
+
+  .experience-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 3rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: white;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(201, 169, 97, 0.3);
+  }
+
+  .experience-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(201, 169, 97, 0.5);
+  }
+
+  .btn-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .experience-btn:hover .btn-arrow {
+    transform: translateX(5px);
+  }
+
+  /* 響應式設計 */
+  @media (max-width: 1024px) {
+    .scrolly-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 0 var(--spacing-lg);
+    }
+
+    .scrolly-section {
+      padding: 5rem 0;
+    }
+
+    .stats-section {
+      padding: 5rem 0;
+    }
+
+    .experience-section {
+      padding: 6rem 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .scrolly-title {
+      font-size: 2rem;
+    }
+
+    .scrolly-description {
+      font-size: 1rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .experience-title {
+      font-size: 2rem;
+    }
+
+    .experience-description {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in elements
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Parallax effect for images
+  window.addEventListener('scroll', () => {
+    const parallaxImages = document.querySelectorAll('.parallax-image');
+    
+    parallaxImages.forEach(image => {
+      const rect = image.getBoundingClientRect();
+      const scrolled = window.scrollY;
+      const rate = scrolled * -0.3;
+      
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        (image as HTMLElement).style.transform = `translateY(${rate}px)`;
+      }
+    });
+  });
+
+  // Counter animation for stats
+  const animateCounter = (element: Element, target: number, duration: number = 2000) => {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        element.textContent = target.toString();
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(start).toString();
+      }
+    }, 16);
+  };
+
+  // Observe stats section
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const statNumbers = entry.target.querySelectorAll('.stat-number');
+        statNumbers.forEach((stat, index) => {
+          setTimeout(() => {
+            stat.classList.add('visible');
+          }, index * 200);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsSection = document.querySelector('.stats-section');
+  if (statsSection) {
+    statsObserver.observe(statsSection);
+  }
+</script>

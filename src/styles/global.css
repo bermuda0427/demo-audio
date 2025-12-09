@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* 引入 Google Fonts - 奢華音響品牌字型 */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
 /* ============================================
    Design System - 設計系統中控
    所有色碼、字型大小、間距統一在此定義
@@ -9,27 +12,30 @@
   /* ----------------------------------------
      Colors - 語意化顏色系統
      ---------------------------------------- */
-  --color-primary: oklch(0.45 0.12 250);
-  --color-primary-light: oklch(0.55 0.12 250);
-  --color-primary-dark: oklch(0.35 0.12 250);
+  /* 色彩系統 - 極致奢華 */
+  --color-primary: #0A0A0A;        /* 深黑 */
+  --color-secondary: #C9A961;      /* 奢華金 */
+  --color-accent: #8B7355;         /* 古銅色 */
+  --color-background: #FAFAFA;     /* 淺灰背景 */
   
-  --color-secondary: oklch(0.60 0.15 160);
-  --color-secondary-light: oklch(0.70 0.15 160);
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F5F5;
   
-  --color-surface: oklch(0.98 0.005 250);
-  --color-surface-alt: oklch(0.95 0.01 250);
+  --color-text-main: #0A0A0A;
+  --color-text-muted: #4A4A4A;
+  --color-text-light: #9CA3AF;
   
-  --color-text-main: oklch(0.20 0.02 250);
-  --color-text-muted: oklch(0.45 0.02 250);
-  --color-text-light: oklch(0.98 0 0);
-  
-  --color-border: oklch(0.90 0.01 250);
-  --color-border-dark: oklch(0.80 0.01 250);
+  --color-border: #E5E5E5;
+  --color-border-dark: #D4D4D4;
   
   /* ----------------------------------------
      Typography - 字型比例系統
      ---------------------------------------- */
-  --font-sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
+  /* 字型系統 - 奢華音響品牌 */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', 'Noto Sans TC', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: var(--font-body);
   
   --text-h1: 3.5rem;
   --text-h1--line-height: 1.2;
@@ -99,10 +105,17 @@
   }
   
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     color: var(--color-text-main);
-    background-color: var(--color-surface);
+    background-color: var(--color-background);
     line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
   }
   
   h1 {
@@ -167,9 +180,38 @@
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  /* Scrollytelling 專用工具類別 */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .parallax-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .luxury-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+  }
+  
+  /* 文字選取顏色 */
+  ::selection {
+    background-color: var(--color-secondary);
+    color: white;
   }
 }
